@@ -15,6 +15,7 @@ This is a minor side project that I enjoyed doing, as I was very passionate abou
 You will need to modify the webscraper for your own site specific data, the amount of images, the cornering degree, the bleed type (mirror or blur, or others) and the bleed size for personal use. 
 
 I have some example transformation images. Note that the image resolution has gone from 350x511 to 1616x2260 to be suitable for printing.
+I will update this with the printed cards when they arrive!
 
 ![Original Card Example 1](https://github.com/user-attachments/assets/3be9b342-d261-490b-8fa4-2e0fc48265c0)
 
