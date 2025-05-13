@@ -51,15 +51,13 @@ def process_card(input_path, output_path, corner_radius=21):
     print(f"Cornered: {input_path}")
 
 # Usage
-# for i in range (22, 43):
-#     folder = os.path.join("D:\\VanguardImages", str(i))
-#     if not os.path.isdir(folder):
-#         print(f"Skipping missing folder: {folder}")
-#         continue
-#     for file in os.listdir(folder):
-folder = "D:\\VanguardImages"
-file = "D:\\VanguardImages\\vback.png"
-if file.lower().endswith((".jpg", ".jpeg")):
-    input_path = os.path.join(folder, file)
-    output_path = os.path.join(folder, f"{file.rsplit('.', 1)[0]}.png")
-    process_card(input_path, output_path)
+for i in range (22, 43):
+    folder = os.path.join("D:\\VanguardImages", str(i))
+    if not os.path.isdir(folder):
+        print(f"Skipping missing folder: {folder}")
+        continue
+    for file in os.listdir(folder):
+        if file.lower().endswith((".jpg", ".jpeg")):
+            input_path = os.path.join(folder, file)
+            output_path = os.path.join(folder, f"{file.rsplit('.', 1)[0]}.png")
+            process_card(input_path, output_path)

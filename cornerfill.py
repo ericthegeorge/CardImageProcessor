@@ -45,27 +45,26 @@ base_dir = "D:\\VanguardImages"
 output_subdir = "ContentAwareFilled"
 output_maskdir = "Masks"
 
-# for vcl in range(22, 43):
-    # input_dir = os.path.join(base_dir, str(vcl))
-    # output_dir = os.path.join(base_dir, str(vcl), output_subdir)
+for vcl in range(22, 43):
+    input_dir = os.path.join(base_dir, str(vcl))
+    output_dir = os.path.join(base_dir, str(vcl), output_subdir)
 
-#     if not os.path.exists(input_dir):
-#         print(f"Skipping: {input_dir} (does not exist)")
-#         continue
+    if not os.path.exists(input_dir):
+        print(f"Skipping: {input_dir} (does not exist)")
+        continue
 
-#     os.makedirs(output_dir, exist_ok=True)
+    os.makedirs(output_dir, exist_ok=True)
 
-#     for filename in os.listdir(input_dir):
-filename = "vback.png"
-if filename.lower().endswith(".png"):
-    input_dir = base_dir
-    output_dir = base_dir
-    input_path = os.path.join(input_dir, filename)
-    output_path = os.path.join(output_dir, filename)
+    for filename in os.listdir(input_dir):
+        if filename.lower().endswith(".png"):
+            input_dir = base_dir
+            output_dir = base_dir
+            input_path = os.path.join(input_dir, filename)
+            output_path = os.path.join(output_dir, filename)
 
-    fill_corners_solid(input_path, output_path, "D:\\VanguardImages\\vbackmasks")  # Lower = more sensitive to dark pixels
-    print(f"Fixed corners: {filename}")
+            fill_corners_solid(input_path, output_path, "D:\\VanguardImages\\vbackmasks")  # Lower = more sensitive to dark pixels
+            print(f"Fixed corners: {filename}")
 
-    # print(f"Completed volume: {vcl}")
+    print(f"Completed volume: {vcl}")
 
-# print("Corner filling complete!")
+print("Corner filling complete!")

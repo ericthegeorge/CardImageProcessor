@@ -167,42 +167,41 @@ def add_bleed_blur(input_path, output_path, upscaled_output_path, fallback_dpi=3
 
 
 # # Process images
-# for vcl in range (22, 43):
+for vcl in range (22, 43):
 
-#     input_dir = os.path.join(base_dir, str(vcl), "ContentAwareFilled")
-#     output_dir = os.path.join(base_dir, str(vcl), "BlurredBases")
-#     upscaled_output_dir = os.path.join(base_dir, str(vcl), "Upscaled")
+    input_dir = os.path.join(base_dir, str(vcl), "ContentAwareFilled")
+    output_dir = os.path.join(base_dir, str(vcl), "BlurredBases")
+    upscaled_output_dir = os.path.join(base_dir, str(vcl), "Upscaled")
 
-#     if not os.path.exists(input_dir):
-#         print(f"Skipping: {input_dir} (does not exist)")
-#         continue  # Skip this index cleanly
-
-
-#     os.makedirs(output_dir, exist_ok=True)
-#     os.makedirs(upscaled_output_dir, exist_ok=True)
-
-#     for filename in os.listdir(input_dir):
-filename = "vback.png"
-if filename.lower().endswith((".png")):
-    # input_path = os.path.join(input_dir, filename)
-    input_path = os.path.join("D:\\VanguardImages", filename)
-
-    img = Image.open(input_path)
-
-    # Get DPI (Pillow stores it as (xdpi, ydpi))
-    dpi = img.info.get('dpi', (fallback_dpi, fallback_dpi))[0]  # Use x DPI
-    if dpi == 0:
-        dpi = fallback_dpi
-
-    # Calculate bleed in pixels
-    bleed_px = int((bleed_mm / 25.4) * dpi)
-
-    w, h = img.size
-    output_dir = "D:\\VanguardImages"
-    upscaled_output_dir = output_dir
-    output_path = os.path.join(output_dir, f"{os.path.splitext(filename)[0]}.png")
-    upscaled_output_path = os.path.join(upscaled_output_dir, f"{os.path.splitext(filename)[0]}.png")
+    if not os.path.exists(input_dir):
+        print(f"Skipping: {input_dir} (does not exist)")
+        continue  # Skip this index cleanly
 
 
-    add_bleed_blur(input_path, output_path, upscaled_output_path)
-    # print(f"Done. Processed: {vcl}")
+    os.makedirs(output_dir, exist_ok=True)
+    os.makedirs(upscaled_output_dir, exist_ok=True)
+
+    for filename in os.listdir(input_dir):
+        # filename = "vback.png"
+        if filename.lower().endswith((".png")):
+            input_path = os.path.join(input_dir, filename)
+
+            img = Image.open(input_path)
+
+            # Get DPI (Pillow stores it as (xdpi, ydpi))
+            dpi = img.info.get('dpi', (fallback_dpi, fallback_dpi))[0]  # Use x DPI
+            if dpi == 0:
+                dpi = fallback_dpi
+
+            # Calculate bleed in pixels
+            bleed_px = int((bleed_mm / 25.4) * dpi)
+
+            w, h = img.size
+            # output_dir = "D:\\VanguardImages"
+            # upscaled_output_dir = output_dir
+            output_path = os.path.join(output_dir, f"{os.path.splitext(filename)[0]}.png")
+            upscaled_output_path = os.path.join(upscaled_output_dir, f"{os.path.splitext(filename)[0]}.png")
+
+
+            add_bleed_blur(input_path, output_path, upscaled_output_path)
+    print(f"Done. Processed: {vcl}")
